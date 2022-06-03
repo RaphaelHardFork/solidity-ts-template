@@ -2,7 +2,7 @@
 /* eslint-disable node/no-unsupported-features/es-syntax */
 import { readFile, writeFile } from "fs/promises";
 
-const FILE_PATH = "./scripts/deployed.json";
+const FILE_PATH = "./scripts/utils/deployed.json";
 
 type Contract = {
   address: string;
@@ -26,9 +26,9 @@ export const deployed = async (
   constructorArgs: any[] | undefined,
   implementationAddr: string | undefined
 ) => {
-  console.log(`${contractName} deployed on ${networkName} at ${address}`);
+  console.log(`\n${contractName} deployed on ${networkName} at ${address}`);
   console.log(
-    `${FILE_PATH} updated with ${contractName} on ${networkName} at ${address}`
+    `${FILE_PATH} updated with ${contractName} on ${networkName} at ${address}\n`
   );
 
   // Read existant file
@@ -39,7 +39,7 @@ export const deployed = async (
     jsonString = await readFile(FILE_PATH, "utf-8");
     parsedJson = JSON.parse(jsonString);
   } catch (e) {
-    console.log("New deployed.json file created");
+    console.log("New deployed.json file created\n");
     // Do nothing
   }
 
@@ -122,6 +122,7 @@ export const verified = async (contractName: string, networkName: string) => {
   const storedJson = JSON.stringify(parsedJson);
   try {
     await writeFile(FILE_PATH, storedJson);
+    console.log(`\nSuccessfully updated verification on deployed.json\n`);
   } catch (e) {
     console.log((e as any).message);
     throw e;

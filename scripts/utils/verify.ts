@@ -1,12 +1,14 @@
 /* eslint-disable no-process-exit */
 import { readFile } from "fs/promises";
 import hre, { run } from "hardhat";
-import { Root } from "./utils/deployment";
+import { Root, verified } from "./deployment";
 
 const main = async () => {
   let parsedJson: Root;
   try {
-    parsedJson = JSON.parse(await readFile("./scripts/deployed.json", "utf-8"));
+    parsedJson = JSON.parse(
+      await readFile("./scripts/utils/deployed.json", "utf-8")
+    );
   } catch (e) {
     console.log("Cannot read deployed.json or no deployed.json file");
     process.exit(1);
@@ -24,6 +26,7 @@ const main = async () => {
             parsedJson.contracts[contractName][hre.network.name]
               .constructorArgs,
         });
+        await verified(contractName, hre.network.name);
       } catch (e) {
         console.log(e);
         continue;
