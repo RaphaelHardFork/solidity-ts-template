@@ -29,11 +29,11 @@ contract FungibleToken_test is DSTest {
 
     function testCannotMint() public {
         vm.startPrank(address(1));
-        vm.expectRevert(bytes("FT: no more than 50 tokens"));
+        vm.expectRevert(bytes("Cannot mint more than 50 tokens"));
         ft.mint(51 * 10**18);
 
         ft.mint(45 * 10**18);
-        vm.expectRevert(bytes("FT: already have tokens"));
+        vm.expectRevert(bytes("You already have tokens"));
         ft.mint(45 * 10**18);
     }
 
@@ -49,7 +49,7 @@ contract FungibleToken_test is DSTest {
 
     function testCannotMintMore() public {
         vm.startPrank(address(2));
-        vm.expectRevert(bytes("FT: should send value"));
+        vm.expectRevert(bytes("Mint more require some values"));
         ft.mintMore(75 * 10**18);
     }
 

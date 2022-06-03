@@ -20,5 +20,11 @@ module.exports = {
       "error",
       { ignores: ["modules"] },
     ],
+    "node/no-missing-import": [
+      0, // remove the rule
+      {
+        allowModules: ["./typechain"],
+      },
+    ],
   },
 };

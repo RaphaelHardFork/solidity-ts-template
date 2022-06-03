@@ -1,4 +1,5 @@
 import * as dotenv from "dotenv";
+import { readFileSync } from "fs";
 
 import { HardhatUserConfig, task } from "hardhat/config";
 import "@nomiclabs/hardhat-etherscan";
@@ -22,8 +23,7 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 
 // Function for Foundry https://book.getfoundry.sh/config/hardhat.html#instructions
 function getRemappings() {
-  return fs
-    .readFileSync("remappings.txt", "utf8")
+  return readFileSync("remappings.txt", "utf8")
     .split("\n")
     .filter(Boolean) // remove empty lines
     .map((line) => line.trim().split("="));
@@ -33,7 +33,7 @@ function getRemappings() {
 // Go to https://hardhat.org/config/ to learn more
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.4",
+  solidity: "0.8.13",
   networks: {
     ropsten: {
       url: process.env.ROPSTEN_URL || "",
