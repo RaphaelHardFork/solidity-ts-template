@@ -13,6 +13,13 @@ Then add a `.env` file following the `.env.exemple` file
 
 ## Using
 
-Create contracts in `src`, write unit tests in **Solidity** using [Foundry](https://book.getfoundry.sh/forge/writing-tests.html) in `src/test` or in **JS/TS** in `test`.
+- Write smart contracts in `src`
+- Write unit tests in **Solidity** using [Foundry](https://book.getfoundry.sh/forge/writing-tests.html) in `src/test`
+- **OR**
+- in **Javascript/Typescript** in `test`, you can use _typechain_ (once compilled) in TS
 
-Then deploy with scripts, you can use `deployed` function to save a track of your deployed contract in `deployed.json`
+- Then deploy with scripts, you can use `deployed` function to save a track of your deployed contract in `deployed.json`
+
+## Verify contracts
+
+Run the script `scripts/utils/verify.ts`, this should be used once the `deployed.json` is writen (after deployments).
