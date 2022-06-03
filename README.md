@@ -18,7 +18,11 @@ Then add a `.env` file following the `.env.exemple` file
 - **OR**
 - in **Javascript/Typescript** in `test`, you can use _typechain_ (once compilled) in TS
 
-- Then deploy with scripts, you can use `deployed` function to save a track of your deployed contract in `deployed.json`
+- Then deploy with scripts, you can use `deployed` function in your scripts ([see exemple](https://github.com/RaphaelHardFork/solidity-ts-template/blob/main/scripts/fungibleToken.ts#L16)) to save a track of your deployed contract in `deployed.json`
+
+```
+  npx hardhat run --network rinkeby scripts/yourScript.ts
+```
 
 ## Verify contracts
 
