@@ -29,16 +29,35 @@ function getRemappings() {
     .map((line) => line.trim().split("="));
 }
 
+const INFURA_PROJECT_ID = process.env.INFURA_PROJECT_ID;
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
+// const ETHERSCAN_KEY = process.env.ETHERSCAN_KEY;
+// const BSCSCAN_KEY = process.env.BSCSCAN_KEY;
+
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
-
 const config: HardhatUserConfig = {
   solidity: "0.8.13",
   networks: {
+    mainnet: {
+      url: `https://mainnet.infura.io/v3/${INFURA_PROJECT_ID}`,
+      accounts: [`0x${PRIVATE_KEY}`],
+    },
     ropsten: {
-      url: process.env.ROPSTEN_URL || "",
-      accounts:
-        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      url: `https://ropsten.infura.io/v3/${INFURA_PROJECT_ID}`,
+      accounts: [`0x${PRIVATE_KEY}`],
+    },
+    kovan: {
+      url: `https://kovan.infura.io/v3/${INFURA_PROJECT_ID}`,
+      accounts: [`0x${PRIVATE_KEY}`],
+    },
+    rinkeby: {
+      url: `https://rinkeby.infura.io/v3/${INFURA_PROJECT_ID}`,
+      accounts: [`0x${PRIVATE_KEY}`],
+    },
+    goerli: {
+      url: `https://goerli.infura.io/v3/${INFURA_PROJECT_ID}`,
+      accounts: [`0x${PRIVATE_KEY}`],
     },
   },
   gasReporter: {

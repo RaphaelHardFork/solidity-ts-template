@@ -1,19 +1,25 @@
 /* eslint-disable no-process-exit */
-const hre = require("hardhat");
-const { ethers } = require("hardhat");
+import hre, { ethers } from "hardhat";
+import { deployed } from "./utils/deployment";
 
-// const ADDRESS_ZERO = ethers.constants.AddressZero;
+const CONTRACT_NAME = "FungibleToken";
 
 const main = async () => {
   const [deployer] = await ethers.getSigners();
   console.log("Deploying contracts with the account:", deployer.address);
 
-  const FungibleToken = await hre.ethers.getContractFactory("FungibleToken");
+  const FungibleToken = await hre.ethers.getContractFactory(CONTRACT_NAME);
   const token = await FungibleToken.deploy(deployer.address);
   await token.deployed();
-  // await deployed("FungibleToken", hre.network.name, token.address, [
-  //   deployer.address,
-  // ]);
+
+  // save into deployed.json
+  await deployed(
+    CONTRACT_NAME,
+    hre.network.name,
+    token.address,
+    [deployer.address],
+    undefined
+  );
 };
 
 main()
