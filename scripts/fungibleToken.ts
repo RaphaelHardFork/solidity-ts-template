@@ -17,7 +17,7 @@ const main = async () => {
     CONTRACT_NAME,
     hre.network.name,
     token.address,
-    [deployer.address],
+    [deployer.address], // undefined if no constructor args
     undefined
   );
 };

@@ -27,3 +27,23 @@ Then add a `.env` file following the `.env.exemple` file
 ## Verify contracts
 
 Run the script `scripts/utils/verify.ts`, this should be used once the `deployed.json` is writen (after deployments).
+
+_Always verify the constructor arguments, it can prevent from running this script_
+
+## Create the ABI list
+
+After deployment, and if you have a `deployed.json` file you can create the list of contracts with `address` and `abi` in orer to export into the front-end repository:
+
+```
+npx hardhat run --network rinkeby scripts/utils/abiList.ts
+```
+
+## Contract size and gas report
+
+- contracts-sizer: https://www.npmjs.com/package/hardhat-contract-sizer
+- gas-report: included in Foundry (https://book.getfoundry.sh/forge/gas-reports.html)
+
+## Not added yet
+
+- Upgradeable contracts, with the ugraded function for the `deployed.json`, to know the implementation address.
+- Signature utils
