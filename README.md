@@ -45,5 +45,5 @@ npx hardhat run --network rinkeby scripts/utils/abiList.ts
 
 ## Not added yet
 
-- Upgradeable contracts, with the ugraded function for the `deployed.json`, to know the implementation address.
+- Upgradeable contracts, with the upgraded function for the `deployed.json`, to know the implementation address.
 - Signature utils
