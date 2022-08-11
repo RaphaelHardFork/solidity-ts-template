@@ -9,7 +9,7 @@ const main = async () => {
   console.log("Deploying contracts with the account:", deployer.address);
 
   const FungibleToken = await hre.ethers.getContractFactory(CONTRACT_NAME);
-  const token = await FungibleToken.deploy(deployer.address);
+  const token = await FungibleToken.deploy();
   await token.deployed();
 
   // save into deployed.json

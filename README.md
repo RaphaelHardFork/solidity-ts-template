@@ -1,13 +1,14 @@
 # Solidity TypeScript Template
 
-![](https://img.shields.io/badge/Node.js-v16.15.0-blue)
-![](https://img.shields.io/badge/Foundry-v0.2.0-green)
+![](https://img.shields.io/badge/Node.js-v18.7.0-green)
+![](https://img.shields.io/badge/Hardhat-v2.10.1-green)
+![](https://img.shields.io/badge/Foundry-v0.2.0-orange)
 
 ## After cloning
 
 ```
 yarn
-forge update
+forge install
 ```
 
 Then add a `.env` file following the `.env.exemple` file

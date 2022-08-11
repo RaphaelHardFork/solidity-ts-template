@@ -6,6 +6,7 @@ import "openzeppelin-contracts/contracts/token/ERC20/ERC20.sol";
 import "openzeppelin-contracts/contracts/access/Ownable.sol";
 import "openzeppelin-contracts/contracts/utils/Address.sol";
 
+/// @dev This contract is not a good exemple
 interface Oracle {
     function lastestAnswer() external view returns (int256);
 }
