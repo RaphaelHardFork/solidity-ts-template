@@ -6,7 +6,7 @@ import "ds-test/test.sol";
 import "forge-std/Test.sol";
 import "forge-std/Vm.sol";
 
-import "../FungibleToken.sol";
+import "../src/FungibleToken.sol";
 
 contract ETHOracle {
     function lastestAnswer() external pure returns (int256) {
@@ -24,6 +24,7 @@ contract FungibleToken_test is DSTest, Test {
         vm.startPrank(OWNER);
         ft = new FungibleToken();
         ft.setOracle(Oracle(_oracle));
+        vm.stopPrank();
     }
 
     function testMint(uint256 amount) public {
@@ -90,11 +91,11 @@ contract FungibleToken_test is DSTest, Test {
     }
 
     function testWithdraw() public {
-        vm.startPrank(address(1));
         vm.deal(address(1), 50 * 10**18);
+        vm.prank(address(1));
         ft.mintMore{value: 5 * 10**18}(500 * 10**18);
 
-        vm.startPrank(OWNER);
+        vm.prank(OWNER);
         ft.withdraw();
         assertEq(OWNER.balance, 5 * 10**18);
     }
