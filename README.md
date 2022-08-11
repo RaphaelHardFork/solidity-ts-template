@@ -1,6 +1,7 @@
 # Solidity TypeScript Template
 
 ![](https://img.shields.io/badge/Node.js-v16.15.0-blue)
+![](https://img.shields.io/badge/Foundry-v0.2.0-green)
 
 ## After cloning
 
